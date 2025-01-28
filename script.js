@@ -7,12 +7,14 @@ function delay(ms) {
 }
 async function getAdvice() {
     adviceText.textContent = 'Loading...';
-    await delay(500); // Optional delay for user experience
+    await delay(500);
+
     try {
-        // Add cache-control to bypass caching
-        const response = await fetch('https://api.adviceslip.com/advice', {
-            cache: "no-cache"
+        // Append a timestamp to the URL
+        const response = await fetch(`https://api.adviceslip.com/advice?timestamp=${Date.now()}`, {
+            cache: "no-cache", // Ensure the browser doesn't cache
         });
+
         const data = await response.json();
         const { advice } = data.slip;
 
@@ -23,6 +25,7 @@ async function getAdvice() {
         console.error('Error:', error);
     }
 }
+
 
 adviceBtn.addEventListener('click', getAdvice);
 getAdvice();
