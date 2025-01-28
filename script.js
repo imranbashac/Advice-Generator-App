@@ -6,11 +6,12 @@ function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 async function getAdvice() {
-    adviceText.textContent = 'Loading...'
-    await delay(500);
+    adviceText.textContent = 'Loading...';
+    await delay(500); // Optional delay for user experience
     try {
-        const response = await fetch('https://api.adviceslip.com/advice?timestamp=${new Date().getTime()}'{
-                                    cache: "no-cache"
+        // Add cache-control to bypass caching
+        const response = await fetch('https://api.adviceslip.com/advice', {
+            cache: "no-cache"
         });
         const data = await response.json();
         const { advice } = data.slip;
@@ -19,6 +20,7 @@ async function getAdvice() {
         adviceText.textContent = advice;
     } catch (error) {
         adviceText.textContent = 'Something went wrong';
+        console.error('Error:', error);
     }
 }
 
