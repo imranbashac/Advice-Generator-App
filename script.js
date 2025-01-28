@@ -7,12 +7,12 @@ async function getAdvice() {
     await delay(500);
 
     try {
-        const response = await fetch('https://api.adviceslip.com/advice', {
-            method: 'GET',
-            headers: {
-                'Cache-Control': 'no-cache', // Prevent caching
-            },
-        });
+        const response = await fetch(`https://api.adviceslip.com/advice?random=${Math.random()}`, {
+    method: 'GET',
+    headers: {
+        'Cache-Control': 'no-cache',
+    },
+});
 
         const data = await response.json();
         const { advice } = data.slip;
