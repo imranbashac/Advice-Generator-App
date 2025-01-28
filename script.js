@@ -6,12 +6,11 @@ async function getAdvice() {
     adviceText.textContent = 'Loading...';
 
     try {
-        const response = await fetch(`https://api.adviceslip.com/advice?random=${Math.random()}`, {
+        const response = await fetch('https://api.adviceslip.com/advice', {
     method: 'GET',
-    headers: {
-        'Cache-Control': 'no-cache',
-    },
+    cache: 'no-store', // Forces the browser to bypass cache
 });
+
 
         const data = await response.json();
         const { advice } = data.slip;
