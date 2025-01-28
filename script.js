@@ -4,9 +4,14 @@ const adviceBtn = document.querySelector('.dice-btn');
 
 async function getAdvice() {
     adviceText.textContent = 'Loading...';
+    await delay(500);
+
     try {
-        const response = await fetch(`https://api.adviceslip.com/advice?timestamp=${Date.now()}`, {
-            cache: "no-cache", 
+        const response = await fetch('https://api.adviceslip.com/advice', {
+            method: 'GET',
+            headers: {
+                'Cache-Control': 'no-cache', // Prevent caching
+            },
         });
 
         const data = await response.json();
@@ -19,6 +24,7 @@ async function getAdvice() {
         console.error('Error:', error);
     }
 }
+
 
 
 adviceBtn.addEventListener('click', getAdvice);
