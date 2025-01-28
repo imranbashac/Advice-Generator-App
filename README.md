@@ -14,7 +14,7 @@ This is a simple **Advice Generator App** that fetches random pieces of advice f
 
 ## Demo
 
-You can view the live demo of the app [here](#).
+You can view the live demo of the app [here](https://imranbashac.github.io/Advice-Generator-App/).
 
 ![App Preview](./preview-image.png)
 
