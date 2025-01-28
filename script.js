@@ -9,7 +9,7 @@ async function getAdvice() {
     adviceText.textContent = 'Loading...'
     await delay(500);
     try {
-        const response = await fetch('https://api.adviceslip.com/advice');
+        const response = await fetch('https://api.adviceslip.com/advice?timestamp=${new Date().getTime()}');
         const data = await response.json();
         const { advice } = data.slip;
 
