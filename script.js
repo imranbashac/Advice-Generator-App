@@ -4,7 +4,6 @@ const adviceBtn = document.querySelector('.dice-btn');
 
 async function getAdvice() {
     adviceText.textContent = 'Loading...';
-    await delay(500);
 
     try {
         const response = await fetch(`https://api.adviceslip.com/advice?random=${Math.random()}`, {
